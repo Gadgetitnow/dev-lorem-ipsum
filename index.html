@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Dev Lorem Generator | Jesse DevUtils</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen font-sans">
+    <nav class="bg-slate-800 border-b border-slate-700 p-4 mb-8">
+        <div class="max-w-6xl mx-auto flex flex-wrap gap-4 text-sm font-medium">
+            <span class="text-slate-400 mr-2">MY TOOLS:</span>
+            <a href="https://jesse-dev-utils.netlify.app" class="text-teal-400 hover:text-white transition">JSON &rarr; TS</a>
+            <a href="https://jesse-svg-utils.netlify.app" class="text-teal-400 hover:text-white transition">SVG &rarr; Tailwind</a>
+            <a href="https://jesse-html-utils.netlify.app" class="text-teal-400 hover:text-white transition">HTML Encoder</a>
+            <a href="https://jesse-css-utils.netlify.app" class="text-teal-400 hover:text-white transition">PX &rarr; REM</a>
+        </div>
+    </nav>
+    <div class="max-w-4xl mx-auto px-8 text-center">
+        <h1 class="text-3xl font-bold text-pink-400 mb-2 text-left">Dev Lorem Generator</h1>
+        <p class="text-slate-400 mb-8 text-left">Funny placeholder text for developer mockups.</p>
+        <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-2xl">
+            <div id="output" class="bg-slate-950 p-6 rounded mb-6 min-h-[150px] text-left text-pink-100 font-serif leading-relaxed italic border border-slate-800">
+                Click the button to generate some "Dev Ipsum"...
+            </div>
+            <button onclick="gen()" class="bg-pink-600 hover:bg-pink-500 px-8 py-3 rounded-lg font-bold transition-transform active:scale-95 shadow-lg">Generate Text</button>
+        </div>
+    </div>
+    <script>
+        const words = ["Javascript", "Refactor", "Deployment", "Cloud", "Database", "API", "Frontend", "Backend", "Bug", "Stack Overflow", "Git commit", "Syntax error", "Production", "Docker", "Legacy code", "SaaS", "CSS Grid", "Node.js", "Sprint", "Agile"];
+        function gen() {
+            let text = "";
+            for(let i=0; i<40; i++) {
+                text += words[Math.floor(Math.random()*words.length)] + (Math.random() > 0.8 ? ". " : " ");
+            }
+            document.getElementById('output').innerText = text.trim();
+        }
+    </script>
+</body>
+</html>
