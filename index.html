@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>Dev Lorem Generator | Jesse DevUtils</title>
+    <meta charset="UTF-8">
+    <title>Dev Lorem Ipsum | Jesse DevUtils</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-white min-h-screen font-sans">
-    <nav class="bg-slate-800 border-b border-slate-700 p-4 mb-8">
-        <div class="max-w-6xl mx-auto flex flex-wrap gap-4 text-sm font-medium">
-            <span class="text-slate-400 mr-2">MY TOOLS:</span>
-            <a href="https://jesse-dev-utils.netlify.app" class="text-teal-400 hover:text-white transition">JSON &rarr; TS</a>
-            <a href="https://jesse-svg-utils.netlify.app" class="text-teal-400 hover:text-white transition">SVG &rarr; Tailwind</a>
-            <a href="https://jesse-html-utils.netlify.app" class="text-teal-400 hover:text-white transition">HTML Encoder</a>
-            <a href="https://jesse-css-utils.netlify.app" class="text-teal-400 hover:text-white transition">PX &rarr; REM</a>
+    <nav class="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-50 mb-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="https://devutils-io.netlify.app" class="flex items-center gap-2 group">
+                <div class="h-8 w-8 bg-gradient-to-br from-teal-500 to-blue-600 rounded flex items-center justify-center font-bold text-white text-sm">D</div>
+                <span class="text-slate-300 group-hover:text-white font-medium transition-colors">Back to DevUtils.io</span>
+            </a>
+            <div class="hidden md:block text-xs text-slate-500 font-mono italic">Professional Utility Hub &bull; v1.0</div>
         </div>
     </nav>
-    <div class="max-w-4xl mx-auto px-8 text-center">
-        <h1 class="text-3xl font-bold text-pink-400 mb-2 text-left">Dev Lorem Generator</h1>
-        <p class="text-slate-400 mb-8 text-left">Funny placeholder text for developer mockups.</p>
+
+    <div class="max-w-4xl mx-auto px-8">
+        <h1 class="text-3xl font-bold text-pink-400 mb-2">Dev Lorem Ipsum</h1>
+        <p class="text-slate-400 mb-8">Generate code-focused placeholder text for your mockups.</p>
+        
         <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-2xl">
-            <div id="output" class="bg-slate-950 p-6 rounded mb-6 min-h-[150px] text-left text-pink-100 font-serif leading-relaxed italic border border-slate-800">
-                Click the button to generate some "Dev Ipsum"...
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-xs font-bold mb-2 text-slate-500 uppercase">Number of Paragraphs</label>
+                    <input type="number" id="count" value="3" min="1" max="10" class="w-full bg-slate-900 border border-slate-700 p-4 rounded text-xl focus:ring-2 focus:ring-pink-500 outline-none">
+                </div>
+                <button onclick="generateText()" class="w-full bg-pink-600 hover:bg-pink-500 text-white font-bold py-4 rounded transition-colors shadow-lg">Generate Text</button>
+                <div id="output" class="bg-slate-950 border border-slate-800 p-6 rounded text-slate-300 font-serif leading-relaxed h-64 overflow-y-auto whitespace-pre-wrap"></div>
             </div>
-            <button onclick="gen()" class="bg-pink-600 hover:bg-pink-500 px-8 py-3 rounded-lg font-bold transition-transform active:scale-95 shadow-lg">Generate Text</button>
         </div>
     </div>
+
     <script>
-        const words = ["Javascript", "Refactor", "Deployment", "Cloud", "Database", "API", "Frontend", "Backend", "Bug", "Stack Overflow", "Git commit", "Syntax error", "Production", "Docker", "Legacy code", "SaaS", "CSS Grid", "Node.js", "Sprint", "Agile"];
-        function gen() {
-            let text = "";
-            for(let i=0; i<40; i++) {
-                text += words[Math.floor(Math.random()*words.length)] + (Math.random() > 0.8 ? ". " : " ");
+        const phrases = [
+            "The backend architecture scales efficiently through containerization.",
+            "Always validate your input to prevent injection attacks.",
+            "Clean code is not written, it is rewritten.",
+            "The front-end utilizes a responsive grid system for mobile-first design.",
+            "Optimize your database queries to reduce latency and improve performance.",
+            "Git commits should be concise and descriptive of the changes made.",
+            "Automated testing ensures long-term stability in the production environment."
+        ];
+
+        function generateText() {
+            const count = document.getElementById('count').value;
+            let result = "";
+            for (let i = 0; i < count; i++) {
+                let paragraph = [];
+                for (let j = 0; j < 5; j++) {
+                    paragraph.push(phrases[Math.floor(Math.random() * phrases.length)]);
+                }
+                result += paragraph.join(" ") + "\n\n";
             }
-            document.getElementById('output').innerText = text.trim();
+            document.getElementById('output').textContent = result;
         }
+        
+        // Generate initial text
+        generateText();
     </script>
 </body>
 </html>
