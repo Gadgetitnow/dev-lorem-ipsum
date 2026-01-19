@@ -2,62 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dev Lorem Ipsum | Jesse DevUtils</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Lorem Ipsum | Tech Placeholder Generator | Jesse DevUtils</title>
+    <meta name="description" content="Generate realistic developer-themed placeholder text for mockups and UI testing.">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-900 text-white min-h-screen font-sans">
-    <nav class="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-50 mb-8">
+<body class="bg-[#0f172a] text-slate-200 min-h-screen font-sans">
+    <nav class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 p-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="https://devutils-io.netlify.app" class="flex items-center gap-2 group">
-                <div class="h-8 w-8 bg-gradient-to-br from-teal-500 to-blue-600 rounded flex items-center justify-center font-bold text-white text-sm">D</div>
+                <div class="h-8 w-8 bg-gradient-to-br from-pink-500 to-rose-600 rounded flex items-center justify-center font-bold text-white text-sm shadow-lg shadow-pink-500/20">D</div>
                 <span class="text-slate-300 group-hover:text-white font-medium transition-colors">Back to DevUtils.io</span>
             </a>
-            <div class="hidden md:block text-xs text-slate-500 font-mono italic">Professional Utility Hub &bull; v1.0</div>
+            <span class="text-[10px] text-slate-500 font-mono font-bold uppercase tracking-widest">Content Engine v2.0</span>
         </div>
     </nav>
-
-    <div class="max-w-4xl mx-auto px-8">
-        <h1 class="text-3xl font-bold text-pink-400 mb-2">Dev Lorem Ipsum</h1>
-        <p class="text-slate-400 mb-8">Generate code-focused placeholder text for your mockups.</p>
-        
-        <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-2xl">
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-xs font-bold mb-2 text-slate-500 uppercase">Number of Paragraphs</label>
-                    <input type="number" id="count" value="3" min="1" max="10" class="w-full bg-slate-900 border border-slate-700 p-4 rounded text-xl focus:ring-2 focus:ring-pink-500 outline-none">
-                </div>
-                <button onclick="generateText()" class="w-full bg-pink-600 hover:bg-pink-500 text-white font-bold py-4 rounded transition-colors shadow-lg">Generate Text</button>
-                <div id="output" class="bg-slate-950 border border-slate-800 p-6 rounded text-slate-300 font-serif leading-relaxed h-64 overflow-y-auto whitespace-pre-wrap"></div>
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <h1 class="text-4xl font-black text-white mb-2">Dev <span class="text-pink-500">Lorem Ipsum</span></h1>
+        <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-2xl mt-8">
+            <div class="flex gap-4 mb-6">
+                <input type="number" id="count" value="3" class="w-24 bg-slate-950 border border-slate-800 p-4 rounded-xl text-xl outline-none focus:ring-2 focus:ring-pink-500">
+                <button onclick="gen()" class="flex-1 bg-pink-600 hover:bg-pink-500 text-white font-bold rounded-xl transition-all">Generate</button>
             </div>
+            <div id="out" class="bg-slate-950 p-6 rounded-xl font-serif leading-relaxed text-slate-400 h-80 overflow-auto whitespace-pre-wrap"></div>
         </div>
-    </div>
-
+    </main>
     <script>
-        const phrases = [
-            "The backend architecture scales efficiently through containerization.",
-            "Always validate your input to prevent injection attacks.",
-            "Clean code is not written, it is rewritten.",
-            "The front-end utilizes a responsive grid system for mobile-first design.",
-            "Optimize your database queries to reduce latency and improve performance.",
-            "Git commits should be concise and descriptive of the changes made.",
-            "Automated testing ensures long-term stability in the production environment."
-        ];
-
-        function generateText() {
-            const count = document.getElementById('count').value;
-            let result = "";
-            for (let i = 0; i < count; i++) {
-                let paragraph = [];
-                for (let j = 0; j < 5; j++) {
-                    paragraph.push(phrases[Math.floor(Math.random() * phrases.length)]);
-                }
-                result += paragraph.join(" ") + "\n\n";
+        const p = ["The API endpoint returned a 200 OK status.", "Debug the legacy codebase for memory leaks.", "Refactor the component for better state management.", "Push the latest hotfix to the production branch.", "Optimize the SQL query to reduce execution time."];
+        function gen() {
+            let r = "";
+            for(let i=0; i<document.getElementById('count').value; i++) {
+                r += Array(5).fill().map(() => p[Math.floor(Math.random()*p.length)]).join(" ") + "\n\n";
             }
-            document.getElementById('output').textContent = result;
+            document.getElementById('out').textContent = r;
         }
-        
-        // Generate initial text
-        generateText();
+        gen();
     </script>
 </body>
 </html>
